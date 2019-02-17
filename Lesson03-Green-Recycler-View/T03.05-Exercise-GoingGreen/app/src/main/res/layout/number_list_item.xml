@@ -39,9 +39,10 @@
     <!--TODO (7) Set the text color to "#000"-->
     <TextView
         android:id="@+id/tv_view_Holder_instance"
-        android:text="XXXX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextAppearance.AppCompat.Title"
-        ali/>
+        android:layout_gravity="center_vertical|end"
+        android:fontFamily="monospace"
+        android:textColor="#000"/>
 </FrameLayout>
