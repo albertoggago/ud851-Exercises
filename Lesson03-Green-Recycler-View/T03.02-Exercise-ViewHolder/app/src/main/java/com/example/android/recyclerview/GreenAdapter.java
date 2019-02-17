@@ -122,6 +122,9 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
             super(itemView);
             listItemNumberView = (TextView) itemView.findViewById(R.id.tv_item_number);
         }
+        void bind(int listLindex) {
+            listItemNumberView.setText(listLindex);
+        }
     };
 
 }
