@@ -37,7 +37,7 @@ public class ChildActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         // TODO (4) Create an if statement to check if this Intent has the extra we passed from MainActivity
-        if (intent.hasCategory(Intent.EXTRA_TEXT)) {
+        if (intent.hasExtra(Intent.EXTRA_TEXT)) {
             String text = intent.getStringExtra(Intent.EXTRA_TEXT);
             mDisplayText.setText(text);
         }
