@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Child_activity"
+    tools:showIn="@layout/activity_child_activity">
+
+    <!--// Do steps 2 - 5 in activity_child.xml-->
+    <!--// DONE (2) Change the ConstraintLayout to a FrameLayout and make appropriate adjustments-->
+    <!--// DONE (3) Add a TextView with an id value of @id/tv_display-->
+    <!--// DONE (4) Set the text to something that indicates this is default text being displayed-->
+    <!--// DONE (5) Make the text size a little larger-->
+<TextView
+    android:id="@+id/tv_display"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|top"
+    android:text="This text is displayed, default text"
+    android:textSize="30dp"/>
+
+
+
+</FrameLayout>
