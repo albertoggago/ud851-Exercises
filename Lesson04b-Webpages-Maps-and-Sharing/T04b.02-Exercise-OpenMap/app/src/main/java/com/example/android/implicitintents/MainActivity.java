@@ -48,12 +48,20 @@ public class MainActivity extends AppCompatActivity {
      * @param v Button that was clicked.
      */
     public void onClickOpenAddressButton(View v) {
-        // TODO (5) Store an address in a String
+        String address = "Lyren Manor, Maynooth, Ireland";
+        // DONE (5) Store an address in a String
 
-        // TODO (6) Use Uri.Builder with the appropriate scheme and query to form the Uri for the address
+        // DONE (6) Use Uri.Builder with the appropriate scheme and query to form the Uri for the address
+        Uri.Builder uribuilder = new Uri.Builder();
+        uribuilder.scheme("geo")
+                .path("0.0")
+                .query(address);
+        Uri uriAddress = uribuilder.build();
 
-        // TODO (7) Replace the Toast with a call to showMap, passing in the Uri from the previous step
-        Toast.makeText(this, "TODO: Open a map when this button is clicked", Toast.LENGTH_SHORT).show();
+        // DONE (7) Replace the Toast with a call to showMap, passing in the Uri from the previous step
+        //Toast.makeText(this, "DONE: Open a map when this button is clicked", Toast.LENGTH_SHORT).show();
+        showMap(uriAddress);
+
     }
 
     /**
@@ -111,14 +119,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    void showMap(Uri uriMap) {
+        Intent intentMap = new Intent(Intent.ACTION_VIEW);
+        intentMap.setData(uriMap);
+        if (intentMap.resolveActivity(getPackageManager()) != null) {
+            startActivity(intentMap);
+        }
+    }
 
-    // TODO (1) Create a method called showMap with a Uri as the single parameter
+    // DONE (1) Create a method called showMap with a Uri as the single parameter
     // Do steps 2 - 4 within the showMap method
-        // TODO (2) Create an Intent with action type, Intent.ACTION_VIEW
+        // DONE (2) Create an Intent with action type, Intent.ACTION_VIEW
 
-        // TODO (3) Set the data of the Intent to the Uri passed into this method
+        // DONE (3) Set the data of the Intent to the Uri passed into this method
 
-        // TODO (4) Verify that this Intent can be launched and then call startActivity
+        // DONE (4) Verify that this Intent can be launched and then call startActivity
 
 
 }
