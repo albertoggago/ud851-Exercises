@@ -17,6 +17,7 @@ package android.example.com.visualizerpreferences;
  */
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.example.com.visualizerpreferences.AudioVisuals.AudioInputReader;
 import android.example.com.visualizerpreferences.AudioVisuals.VisualizerView;
@@ -26,6 +27,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 public class VisualizerActivity extends AppCompatActivity {
@@ -114,6 +117,7 @@ public class VisualizerActivity extends AppCompatActivity {
             // Other permissions could go down here
 
         }
+
     }
 
     // DONE (1) Create a new Empty Activity named SettingsActivity; make sure to generate the
@@ -124,11 +128,24 @@ public class VisualizerActivity extends AppCompatActivity {
     // "action_settings", title should be saved in strings.xml, the item should never
     // be shown as an action, and orderInCategory should be 100
 
-    // TODO (5) Add the menu to the menu bar
-    // TODO (6) When the "Settings" menu item is pressed, open SettingsActivity
+    // DONE (5) Add the menu to the menu bar
+    // DONE (6) When the "Settings" menu item is pressed, open SettingsActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.visalizer_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent startSettingsActitity = new Intent(this, SettingsActivity.class);
+            startActivity(startSettingsActitity);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
