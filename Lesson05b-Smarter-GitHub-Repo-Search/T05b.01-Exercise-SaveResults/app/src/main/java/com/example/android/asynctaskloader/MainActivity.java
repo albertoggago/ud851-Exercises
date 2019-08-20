@@ -32,9 +32,11 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    // TODO (1) Create a static final key to store the query's URL
+    private final static String SEARCH_QUERY = "query";
+    // DONE (1) Create a static final key to store the query's URL
 
-    // TODO (2) Create a static final key to store the search's raw JSON
+    private final static String SEARCH_RESULT_RAW_JSON = "result";
+    // DONE (2) Create a static final key to store the search's raw JSON
 
     private EditText mSearchBoxEditText;
 
@@ -59,7 +61,13 @@ public class MainActivity extends AppCompatActivity {
 
         mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
 
-        // TODO (9) If the savedInstanceState bundle is not null, set the text of the URL and search results TextView respectively
+        // DONE (9) If the savedInstanceState bundle is not null, set the text of the URL and search results TextView respectively
+        if (savedInstanceState != null && savedInstanceState.containsKey(SEARCH_QUERY)){
+            mSearchBoxEditText.setText(savedInstanceState.getString(SEARCH_QUERY));
+        }
+        if (savedInstanceState != null && savedInstanceState.containsKey(SEARCH_RESULT_RAW_JSON)){
+            mSearchResultsTextView.setText(savedInstanceState.getString(SEARCH_RESULT_RAW_JSON));
+        }
     }
 
     /**
@@ -151,13 +159,24 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // TODO (3) Override onSaveInstanceState to persist data across Activity recreation
-    // Do the following steps within onSaveInstanceState
-    // TODO (4) Make sure super.onSaveInstanceState is called before doing anything else
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // DONE (3) Override onSaveInstanceState to persist data across Activity recreation
+        // Do the following steps within onSaveInstanceState
+        // DONE (4) Make sure super.onSaveInstanceState is called before doing anything else
+        super.onSaveInstanceState(outState);
 
-    // TODO (5) Put the contents of the TextView that contains our URL into a variable
-    // TODO (6) Using the key for the query URL, put the string in the outState Bundle
+        String mQueryUrl = mUrlDisplayTextView.getText().toString();
+        outState.putString(SEARCH_QUERY, mQueryUrl);
+        // DONE (5) Put the contents of the TextView that contains our URL into a variable
+        // DONE (6) Using the key for the query URL, put the string in the outState Bundle
 
-    // TODO (7) Put the contents of the TextView that contains our raw JSON search results into a variable
-    // TODO (8) Using the key for the raw JSON search results, put the search results into the outState Bundle
+        String mRawText = mSearchResultsTextView.getText().toString();
+        outState.putString(SEARCH_RESULT_RAW_JSON, mRawText);
+        // DONE (7) Put the contents of the TextView that contains our raw JSON search results into a variable
+        // DONE (8) Using the key for the raw JSON search results, put the search results into the outState Bundle
+
+
+    }
+
 }
